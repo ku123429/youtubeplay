@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>TJ 노래방 반주 재생기</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+    }
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoId = urlParams.get('id');
+
+    if (videoId) {
+      const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+      document.getElementById('player').src = embedUrl;
+    } else {
+      document.body.innerHTML = "<h1 style='color: white; text-align:center; margin-top: 20%;'>유튜브 영상 ID가 없습니다 (?id=VIDEO_ID)</h1>";
+    }
+  </script>
+</body>
+</html>
